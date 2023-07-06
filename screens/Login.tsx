@@ -6,8 +6,9 @@ import AppTextInput from '../component/AppTextInput';
 import PrimaryButton from '../component/PrimaryButton';
 import AppTextButton from '../component/AppTextButton';
 import { height } from '../constants/Layout';
+import { RouterProps } from '../utils/PropTypes';
 
-const Login = () => {
+const Login = ({navigation}:RouterProps) => {
 
     return (
         <View
@@ -46,7 +47,7 @@ const Login = () => {
                     </View>
 
                     <View style={styles.loginButtonsView}>
-                        <PrimaryButton title='Login'  />
+                        <PrimaryButton title='Login' navigation={navigation}  />
                     </View>
                     <View style={{ justifyContent:'center' }}>
                         <Text style={{ textAlign: 'center', color:'#8f9195',margin:5 }}>or Login with</Text>

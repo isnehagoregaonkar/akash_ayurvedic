@@ -10,8 +10,8 @@ import ProductListSwiper from '../component/ProductListSwiper';
 
 const Home = () => {
   return (
-    <SafeAreaProvider>
-      <AppBar title='Home' />
+    <SafeAreaProvider style={{backgroundColor:'#fff'}}>
+      {/* <AppBar title='Home' /> */}
       {/* <WelcomeView /> */}
       <ScrollView nestedScrollEnabled={true} style={styles.container} showsVerticalScrollIndicator={false}>
       <FlatListSlider />

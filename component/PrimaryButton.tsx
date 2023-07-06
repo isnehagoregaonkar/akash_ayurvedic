@@ -2,12 +2,9 @@ import React from 'react'
 import { Button } from 'react-native-paper';
 import Colors from '../constants/Colors';
 import { width } from '../constants/Layout';
+import { PrimaryButtonProps } from '../utils/PropTypes';
 
-type PrimaryButtonProps={
-    title:string
-}
-
-const PrimaryButton = ({title}:PrimaryButtonProps) => {
+const PrimaryButton = ({title,navigation}:PrimaryButtonProps) => {
     return (
         <Button
         style={{
@@ -22,7 +19,9 @@ const PrimaryButton = ({title}:PrimaryButtonProps) => {
         textColor={'#fff'}
         buttonColor={Colors.primary}
          mode="elevated"
-         onPress={() =>{}}>
+         onPress={() =>{
+            navigation.navigate('Home');
+         }}>
             {title}
         </Button>
     )
