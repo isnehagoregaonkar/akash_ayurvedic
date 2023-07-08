@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, StyleSheet, View, Text, TouchableOpacity } from 'react-native'
+import { ScrollView, StyleSheet, View, Text, TouchableOpacity, FlatList } from 'react-native'
 import AppBar from '../component/AppBar'
 import AppListView from '../component/AppListView'
 import Colors from '../constants/Colors'
@@ -27,6 +27,10 @@ const Home = () => {
               <Text style={styles.viewAllText}>View All</Text>
             </TouchableOpacity>
           </View>
+          {/* <FlatList
+          key={}
+          renderItem={}
+          /> */}
         </View>
       </ScrollView>
     </SafeAreaProvider>
