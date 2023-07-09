@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { SwiperFlatList } from 'react-native-swiper-flatlist';
-import { images } from '../constants/data';
+import { images, productList } from '../constants/data';
 import { width } from '../constants/Layout';
 import ProductItem from './ProductItem';
 
@@ -11,9 +11,9 @@ const ProductListSwiper = () => {
       <SwiperFlatList
         autoplay={false}
         index={0}
-        data={images}
+        data={productList}
         renderItem={({ item,index }) => (
-         <ProductItem index={index} />
+         <ProductItem index={index} item={item} />
         )}
 
       />

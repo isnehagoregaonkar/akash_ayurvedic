@@ -7,13 +7,15 @@ import { width } from '../constants/Layout';
 import AppIconButton from './AppIconButton';
 
 type ProductItemProps = {
-    index: number
+    index: number,
+    item: any,
+    isCat?:boolean
 }
 
-const ProductItem = ({ index }: ProductItemProps) => {
+const ProductItem = ({ index, item, isCat}: ProductItemProps) => {
     return (
         <View style={[styles.container, {
-            backgroundColor: index === 0 ? '#e7f6e4' : '#f6f6f6'
+            backgroundColor: index === 0 ? '#e7f6e4' : '#f6f6f6',
         }]}>
             <Image
                 source={{
@@ -25,37 +27,39 @@ const ProductItem = ({ index }: ProductItemProps) => {
                     alignSelf: 'center'
                 }}
             />
-            <Text style={{
+            <Text
+            numberOfLines={1}
+            style={{
                 fontWeight: 'bold',
                 fontSize: 18,
                 paddingTop: 10,
                 paddingBottom: 5
-            }}>Weight Loss</Text>
+            }}>{item.title}</Text>
             <Text
                 numberOfLines={2}
-                ellipsizeMode='head'
+                ellipsizeMode='tail'
                 style={{
                     fontSize: 12,
                     paddingTop: 5,
                     paddingBottom: 5,
                     color: Colors.text,
                     width: width * 0.4
-                }}>This aids in weight loss and helps in becoming fit</Text>
-            
+                }}>{item.description}</Text>
+
             <View style={{
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'space-between'
             }}>
-<View style={{
-                alignItems: 'flex-start'
-            }}>
-                <Text style={{
-                    fontWeight: '600',
-                    fontSize: 18,
-                    color: Colors.primary
-                }}>₹ 150890</Text>
-            </View>
+                <View style={{
+                    alignItems: 'flex-start'
+                }}>
+                    <Text style={{
+                        fontWeight: '600',
+                        fontSize: 18,
+                        color: Colors.primary
+                    }}>₹ {item.price}</Text>
+                </View>
                 <View style={{
                     flexDirection: 'row',
                     alignItems: 'flex-end'
@@ -73,9 +77,9 @@ export default ProductItem;
 const styles = StyleSheet.create({
     container: {
         margin: 10,
-        width: width * 0.55,
         padding: 15,
         borderRadius: 15,
-        elevation: 1,
+        elevation: 1,      
+        width: width * 0.55,
     }
 })

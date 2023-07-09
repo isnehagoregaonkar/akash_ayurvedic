@@ -7,7 +7,7 @@ const BestSellerList = () => {
   return (
     <FlatList
       data={data1}
-      renderItem={({ item, index }) => <BestSellerProductItem item={item} key={index} />}
+      renderItem={({ item, index }) => <BestSellerProductItem item={item} key={index}  />}
       alwaysBounceVertical={true}
       showsVerticalScrollIndicator={false}
       style={{
