@@ -43,14 +43,37 @@ export const categoryList=[
   },
   {
     id:5,
-    title:'Pain'
+    title:'Hair'
   },
   {
     id:6,
-    title:'Pain'
+    title:'Diabetes'
   },
   {
     id:7,
     title:'Pain'
   },
+  {
+    id:8,
+    title:'All'
+  },
 ];
+
+export const comboProductList=[
+  {
+    id:1,
+    title:'Hair fall combo',
+    image:'',
+    products:'Anti Hair Fall Tablets + Hair Oil',
+    description:'Regular usage of oil keeps your scalp healthy & stimulates hair growth.It is safe to use on all hair and skin types. For best results, wash off with Himalaya Anti-Hair Fall tablets for healthy and beautiful hair.',
+    price:2398,
+  },
+  {
+    id:2,
+    title:'Diabetes combo',
+    image:'',
+    products:'Diabetes control Tablets + Syrup',
+    description:'Intermediate-acting insulin works about 2-4 hours after use, with an average peak time of 12 hours. You can expect this type of insulin to last between 12 and 18 hours.',
+    price:1098,
+  }
+]

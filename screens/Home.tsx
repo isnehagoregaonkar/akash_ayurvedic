@@ -3,10 +3,11 @@ import { ScrollView, StyleSheet, View, Text, TouchableOpacity, FlatList } from '
 import AppBar from '../component/AppBar'
 import AppListView from '../component/AppListView'
 import Colors from '../constants/Colors'
-import { categoryList } from '../constants/data';
+import { categoryList, comboProductList } from '../constants/data';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import FlatListSlider from '../component/FlatListSlider';
 import ProductListSwiper from '../component/ProductListSwiper';
+import ComboProductItem from '../component/ComboProductItem'
 
 const Home = () => {
   return (
@@ -27,10 +28,12 @@ const Home = () => {
               <Text style={styles.viewAllText}>View All</Text>
             </TouchableOpacity>
           </View>
-          {/* <FlatList
-          key={}
-          renderItem={}
-          /> */}
+          <FlatList
+          data={comboProductList}
+          renderItem={({item})=>(
+            <ComboProductItem item={item} />
+          )}
+          />
         </View>
       </ScrollView>
     </SafeAreaProvider>
