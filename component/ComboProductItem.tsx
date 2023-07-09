@@ -3,6 +3,7 @@ import React from 'react'
 import { combo1 } from '../assets/assets'
 import Colors from '../constants/Colors'
 import { width } from '../constants/Layout'
+import { white } from 'react-native-paper/lib/typescript/src/styles/themes/v2/colors'
 
 const ComboProductItem = ({item}:any) => {
   return (
@@ -10,7 +11,8 @@ const ComboProductItem = ({item}:any) => {
             <View style={{width:'40%', justifyContent:'flex-start'}}>
                 <Image source={combo1} style={styles.comboImage}  />
             </View>
-            <View style={{width:'60%',margin:10}}>
+            <View style={{width:'55%',margin:10}}>
+                <Text style={{position:'absolute', right:1, top:-18, color:Colors.primary,backgroundColor:'white'}} numberOfLines={1} ellipsizeMode='tail'>Bestseller</Text>
                 <Text style={styles.titleText} numberOfLines={1} ellipsizeMode='tail'>{item.title}</Text>
                 <Text style={styles.descriptionText} numberOfLines={3} ellipsizeMode='tail'>{item.description}</Text>
                 <Text style={styles.priceText}>₹{item.price}</Text>
@@ -45,7 +47,7 @@ const styles = StyleSheet.create({
       fontWeight:'800',
       fontSize:20,
       color:Colors.primary,
-      marginBottom:5
+      marginVertical:5
     },
     descriptionText:{
       marginVertical:5
