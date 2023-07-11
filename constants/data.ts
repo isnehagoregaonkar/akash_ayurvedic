@@ -27,7 +27,7 @@ export const data1 = [
 export const categoryList=[
   {
     id:1,
-    title:'Skin'
+    title:'All'
   },
   {
     id:2,
@@ -55,7 +55,7 @@ export const categoryList=[
   },
   {
     id:8,
-    title:'All'
+    title:'Skin'
   },
 ];
 
@@ -88,7 +88,8 @@ export const productList=[
     products:'Anti Hair Fall Tablets + Hair Oil',
     description:'Regular usage of oil keeps your scalp healthy & stimulates hair growth.It is safe to use on all hair and skin types. For best results, wash off with Himalaya Anti-Hair Fall tablets for healthy and beautiful hair.',
     price:710,
-    isBestseller:true
+    isBestseller:true,
+    isWishlisted:true,
   },
   {
     id:2,
@@ -99,7 +100,8 @@ export const productList=[
     products:'Anti Hair Fall Tablets + Hair Oil',
     description:'Regular usage of oil keeps your scalp healthy & stimulates hair growth.It is safe to use on all hair and skin types. For best results, wash off with Himalaya Anti-Hair Fall tablets for healthy and beautiful hair.',
     price:512,
-    isBestseller:false
+    isBestseller:false,
+    isWishlisted:false,
   },
   {
     id:3,
@@ -110,7 +112,8 @@ export const productList=[
     products:'Anti Hair Fall Tablets + Hair Oil',
     description:'Regular usage of oil keeps your scalp healthy & stimulates hair growth.It is safe to use on all hair and skin types. For best results, wash off with Himalaya Anti-Hair Fall tablets for healthy and beautiful hair.',
     price:80,
-    isBestseller:false
+    isBestseller:false,
+    isWishlisted:false,
   },
   {
     id:4,
@@ -121,7 +124,8 @@ export const productList=[
     products:'Anti Hair Fall Tablets + Hair Oil',
     description:'Regular usage of oil keeps your scalp healthy & stimulates hair growth.It is safe to use on all hair and skin types. For best results, wash off with Himalaya Anti-Hair Fall tablets for healthy and beautiful hair.',
     price:328,
-    isBestseller:true
+    isBestseller:true,
+    isWishlisted:false,
   },
   {
     id:5,
@@ -132,7 +136,8 @@ export const productList=[
     products:'Anti Hair Fall Tablets + Hair Oil',
     description:'Regular usage of oil keeps your scalp healthy & stimulates hair growth.It is safe to use on all hair and skin types. For best results, wash off with Himalaya Anti-Hair Fall tablets for healthy and beautiful hair.',
     price:198,
-    isBestseller:false
+    isBestseller:false,
+    isWishlisted:true
   },
   {
     id:6,
@@ -143,7 +148,8 @@ export const productList=[
     products:'Anti Hair Fall Tablets + Hair Oil',
     description:'Regular usage of oil keeps your scalp healthy & stimulates hair growth.It is safe to use on all hair and skin types. For best results, wash off with Himalaya Anti-Hair Fall tablets for healthy and beautiful hair.',
     price:239,
-    isBestseller:true
+    isBestseller:true,
+    isWishlisted:false,
   },
   {
     id:7,
@@ -154,7 +160,8 @@ export const productList=[
     products:'Anti Hair Fall Tablets',
     description:'Regular usage of oil keeps your scalp healthy & stimulates hair growth.It is safe to use on all hair and skin types. For best results, wash off with Himalaya Anti-Hair Fall tablets for healthy and beautiful hair.',
     price:1000,
-    isBestseller:false
+    isBestseller:false,
+    isWishlisted:false,
   },
   {
     id:8,
@@ -165,6 +172,7 @@ export const productList=[
     products:'Hair Growth Oil',
     description:'Regular usage of oil keeps your scalp healthy & stimulates hair growth.It is safe to use on all hair and skin types. For best results, wash off with Himalaya Anti-Hair Fall tablets for healthy and beautiful hair.',
     price:12398,
-    isBestseller:false
+    isBestseller:false,
+    isWishlisted:false,
   },
 ]

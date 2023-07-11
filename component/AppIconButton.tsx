@@ -17,6 +17,7 @@ const AppIconButton = ({ containerColor, color, icon, mode }: IconButtonProps) =
             containerColor={containerColor}
             size={20}
             onPress={() => console.log('Pressed')}
+        
         />
     )
 }

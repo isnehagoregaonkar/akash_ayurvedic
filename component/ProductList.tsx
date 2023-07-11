@@ -67,7 +67,7 @@ const ProductList = ({navigation}:RouterProps) => {
                   flexDirection: 'row',
                   alignItems: 'flex-end'
                 }}>
-                  <AppIconButton mode='contained' icon='heart' color={Colors.primary} containerColor={Colors.background} />
+                  <AppIconButton mode={item.isWishlisted?'contained-tonal':'outlined'} icon='heart' color={Colors.primary} containerColor={Colors.background} />
                   <AppIconButton mode='contained' icon='cart' color={Colors.background} containerColor={Colors.primary} />
                 </View>
               </View>
