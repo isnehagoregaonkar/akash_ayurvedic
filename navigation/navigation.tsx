@@ -97,7 +97,7 @@ function BottomTabs() {
         name="Cart"
         component={Cart}
         options={{
-          tabBarLabel: 'Products',
+          tabBarLabel: 'Cart',
           tabBarIcon: ({ color, size, focused }) => (
             <View style={focused ? styles.activeTabIconView : {}} >
               <MaterialCommunityIcons

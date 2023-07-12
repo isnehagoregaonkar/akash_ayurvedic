@@ -5,12 +5,14 @@ import AppListView from '../component/AppListView'
 import { categoryList } from '../constants/data'
 import { RouterProps } from '../utils/PropTypes'
 
-const Products = ({navigation}:RouterProps) => {
+const Products = ({ navigation }: RouterProps) => {
   return (
-    <ScrollView nestedScrollEnabled={true} style={styles.container} showsVerticalScrollIndicator={false}>
+    <>
       <AppListView data={categoryList} />
-      <ProductList navigation={navigation} />
-    </ScrollView>
+      <ScrollView nestedScrollEnabled={true} style={styles.container} showsVerticalScrollIndicator={false}>
+        <ProductList navigation={navigation} />
+      </ScrollView>
+    </>
   )
 }
 
@@ -18,8 +20,8 @@ export default Products
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
+    flex: 1,
     backgroundColor: '#fff',
-    padding:15
+    padding: 15
   }
 })

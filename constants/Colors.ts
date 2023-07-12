@@ -14,5 +14,6 @@ export default {
   active: blue,
   borderWithOpacity: "#43a132",
   lightPrimary: '#cfeec9',
+  lightGreen: '#cfeed9',
   gray: gray,
 };

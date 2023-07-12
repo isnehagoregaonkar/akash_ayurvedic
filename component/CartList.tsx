@@ -1,13 +1,13 @@
 import React from 'react'
 import { FlatList } from 'react-native';
 import { data1 } from '../constants/data';
-import BestSellerProductItem from './BestSellerProductItem';
+import CartItem from './CartItem';
 
-const BestSellerList = () => {
+const CartList = () => {
   return (
     <FlatList
       data={data1}
-      renderItem={({ item, index }) => <BestSellerProductItem item={item} key={index}  />}
+      renderItem={({ item, index }) => <CartItem item={item} key={index}  />}
       alwaysBounceVertical={true}
       showsVerticalScrollIndicator={false}
       style={{
@@ -19,4 +19,4 @@ const BestSellerList = () => {
   )
 }
 
-export default BestSellerList
+export default CartList

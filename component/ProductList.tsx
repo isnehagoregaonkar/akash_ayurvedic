@@ -5,9 +5,10 @@ import ProductItem from './ProductItem'
 import AppIconButton from './AppIconButton'
 import Colors from '../constants/Colors'
 import { width } from '../constants/Layout'
-import { RouterProps } from '../utils/PropTypes'
+import { RouterProps } from '../utils/PropTypes';
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
-const ProductList = ({navigation}:RouterProps) => {
+const ProductList = ({ navigation }: RouterProps) => {
   return (
     <View>
       <FlatList
@@ -15,29 +16,32 @@ const ProductList = ({navigation}:RouterProps) => {
         columnWrapperStyle={styles.row}
         renderItem={({ item, index }) => {
           return (
-            <View style={{ flex: 1, maxWidth: '50%', margin: 5, borderRadius:15,backgroundColor:'#f6f6f6', padding:8 }}>
-              <TouchableOpacity onPress={()=>{
+            <View style={{ flex: 1, maxWidth: '50%', margin: 5, borderRadius: 15, backgroundColor: '#f6f6f6', padding: 8 }}>
+              <TouchableOpacity onPress={() => {
                 navigation.navigate('ProductDetails')
               }}>
-              <Image
-                source={{
-                  uri: item.image
-                }}
-                style={{
-                  width: 150,
-                  height: 90,
-                  alignSelf: 'center'
-                }}
-              />
-              <Text
-                numberOfLines={1}
-                style={{
-                  fontWeight: 'bold',
-                  fontSize: 16,
-                  paddingTop: 6,
-                  paddingBottom: 5
-                }}>{item.title}</Text>
+                <TouchableOpacity style={{position:'absolute',top:2,right:2,zIndex:100}}>
+                  <Ionicons name={item.isWishlisted ? 'heart-sharp' : 'heart-outline'} size={30} style={{ color: Colors.primary }} />
                 </TouchableOpacity>
+                <Image
+                  source={{
+                    uri: item.image
+                  }}
+                  style={{
+                    width: 150,
+                    height: 90,
+                    alignSelf: 'center'
+                  }}
+                />
+                <Text
+                  numberOfLines={1}
+                  style={{
+                    fontWeight: 'bold',
+                    fontSize: 16,
+                    paddingTop: 6,
+                    paddingBottom: 5
+                  }}>{item.title}</Text>
+              </TouchableOpacity>
               <Text
                 numberOfLines={2}
                 ellipsizeMode='tail'
@@ -65,10 +69,12 @@ const ProductList = ({navigation}:RouterProps) => {
                 </View>
                 <View style={{
                   flexDirection: 'row',
-                  alignItems: 'flex-end'
+                  justifyContent: 'flex-end',
+                  alignItems: 'center'
                 }}>
-                  <AppIconButton mode={item.isWishlisted?'contained-tonal':'outlined'} icon='heart' color={Colors.primary} containerColor={Colors.background} />
-                  <AppIconButton mode='contained' icon='cart' color={Colors.background} containerColor={Colors.primary} />
+                  <TouchableOpacity style={{backgroundColor:Colors.primary,borderRadius:5,padding:5}}>
+                    <Text style={{color:'#fff',fontSize:12}}>Add to Cart</Text>
+                  </TouchableOpacity>
                 </View>
               </View>
             </View>
