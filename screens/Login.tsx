@@ -78,12 +78,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    brandViewText: {
-        color: '#43a132',
-        fontWeight: 'bold',
-        fontSize: 36,
-        textTransform: 'uppercase'
-    },
     bottomView: {
         flex: 1.5,
         backgroundColor: '#fff',
