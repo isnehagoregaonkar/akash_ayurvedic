@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "433595341623",
+    "project_id": "akash-ayurvedic",
+    "storage_bucket": "akash-ayurvedic.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:433595341623:android:d58d4776088104066858b2",
+        "android_client_info": {
+          "package_name": "com.akash_ayurvedic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "433595341623-ap12gcgh14phe7kkbms9htllsk6biofh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.akash_ayurvedic",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "433595341623-avkfhl4tg7lbvpmmijjeriqh759koc4h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-Vz9xQqH3rnhl-RqBzGyxKw8LmD_Yjeg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "433595341623-avkfhl4tg7lbvpmmijjeriqh759koc4h.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "433595341623-qcmh7i4n70rlgjj26mnde8dt9ibd5q0q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.akash-ayurvedic"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
