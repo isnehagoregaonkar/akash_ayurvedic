@@ -130,8 +130,8 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       {
-        // loggedIn ? <BottomTabs/> : <UnAuthStackNavigation/>
-        <BottomTabs />
+        loggedIn ? <BottomTabs/> : <UnAuthStackNavigation/>
+        // <BottomTabs />
       }
     </NavigationContainer>
   )

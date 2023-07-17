@@ -1,5 +1,5 @@
-import React from 'react'
-import { ImageBackground, StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
+import React, { useState } from 'react'
+import { ImageBackground, StyleSheet, Text, TouchableOpacity, View, Image, Alert } from 'react-native'
 import { background, logo } from '../assets/assets';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AppTextInput from '../component/AppTextInput';
@@ -7,9 +7,23 @@ import PrimaryButton from '../component/PrimaryButton';
 import AppTextButton from '../component/AppTextButton';
 import { height } from '../constants/Layout';
 import { RouterProps } from '../utils/PropTypes';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../utils/firebase';
 
-const Login = ({navigation}:RouterProps) => {
+const Login = ({ navigation }: RouterProps) => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
+    const handleLogin = () => {
+        if (email !== "" && password !== "") {
+            signInWithEmailAndPassword(auth, email, password)
+                .then(() => {
+                    console.log("Login success")
+                    navigation.navigate('Home')
+                })
+                .catch((error) => Alert.alert("Login Error", error.message));
+        }
+    }
     return (
         <View
             style={styles.container}>
@@ -17,23 +31,26 @@ const Login = ({navigation}:RouterProps) => {
                 source={background}
                 style={styles.bgImage}>
                 <View style={styles.brandView}>
-                    <Image source={logo} resizeMode='cover' style={{ width:300,height:300}} />
+                    <Image source={logo} resizeMode='cover' style={{ width: 300, height: 300 }} />
                 </View>
             </ImageBackground>
             <View style={styles.bottomView}>
                 <View style={{ padding: 40 }}>
                     <Text style={styles.welcomeText}>Welcome</Text>
-                    <Text>Don't have an account?
-                        <Text style={styles.registerText}> Register Now</Text>
-                    </Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+                        <Text>Don't have an account?
+                            <Text style={styles.registerText}> Register Now</Text>
+                        </Text>
+                    </TouchableOpacity>
+
                     <View style={styles.formView}>
                         <View>
                             {/* <Text style={styles.labelText}>Email</Text> */}
-                            <AppTextInput placeholder='Email' />
+                            <AppTextInput placeholder='Email' autoCapitalize={'none'} textContentType='emailAddress' onChangeText={(value) => setEmail(value)} autoFocus={true} value={email} />
                         </View>
                         <View>
                             {/* <Text style={styles.labelText}>Password</Text> */}
-                            <AppTextInput placeholder='Password' secureTextEntry={true} />
+                            <AppTextInput placeholder='Password' secureTextEntry={true} autoCapitalize={'none'} textContentType='password' onChangeText={(value) => setPassword(value)} autoFocus={false} value={password} />
                         </View>
                     </View>
                     <View style={styles.forgetPassView}>
@@ -42,17 +59,17 @@ const Login = ({navigation}:RouterProps) => {
                             <Text style={{ color: '#8f9195', alignSelf: 'flex-start' }}> Remember Me</Text>
                         </View> */}
                         <View style={{ flex: 1, }}>
-                            <AppTextButton title='Forgot Password?'/>
+                            <AppTextButton title='Forgot Password?' />
                         </View>
                     </View>
 
                     <View style={styles.loginButtonsView}>
-                        <PrimaryButton title='Login' navigation={navigation} disabled={false}  />
+                        <PrimaryButton title='Login' disabled={false} onPress={handleLogin} />
                     </View>
-                    <View style={{ justifyContent:'center' }}>
-                        <Text style={{ textAlign: 'center', color:'#8f9195',margin:5 }}>or Login with</Text>
-                        <View style={{flexDirection:'row',justifyContent:'center', alignItems:'center',marginTop:10}}>
-                            <TouchableOpacity style={{backgroundColor:'#db4a39', borderRadius:20,width:60, justifyContent:'center', alignItems:'center'}}>
+                    <View style={{ justifyContent: 'center' }}>
+                        <Text style={{ textAlign: 'center', color: '#8f9195', margin: 5 }}>or Login with</Text>
+                        <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 10 }}>
+                            <TouchableOpacity style={{ backgroundColor: '#db4a39', borderRadius: 20, width: 60, justifyContent: 'center', alignItems: 'center' }}>
                                 <MaterialCommunityIcons name='google-plus' color={'#fff'} size={32} />
                             </TouchableOpacity>
                         </View>
@@ -108,13 +125,13 @@ const styles = StyleSheet.create({
     focusedTextInput: {
         borderBottomColor: '#43a132',
         color: '#000'
-    },  
+    },
     forgetPassView: {
         flexDirection: 'row',
     },
     loginButtonsView: {
-        marginTop:15,
-        marginBottom:5,
+        marginTop: 15,
+        marginBottom: 5,
         height: 50,
         justifyContent: 'center',
         alignItems: 'center'

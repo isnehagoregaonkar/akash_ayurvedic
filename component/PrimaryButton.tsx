@@ -4,7 +4,7 @@ import Colors from '../constants/Colors';
 import { width } from '../constants/Layout';
 import { PrimaryButtonProps } from '../utils/PropTypes';
 
-const PrimaryButton = ({title,navigation,disabled}:PrimaryButtonProps) => {
+const PrimaryButton = ({title,disabled,onPress}:PrimaryButtonProps) => {
     return (
         <Button
         style={{
@@ -19,9 +19,7 @@ const PrimaryButton = ({title,navigation,disabled}:PrimaryButtonProps) => {
         textColor={'#fff'}
         buttonColor={Colors.primary}
          mode="elevated"
-         onPress={() =>{
-            navigation.navigate('Home');
-         }}
+         onPress={onPress}
          disabled={disabled}
          
          >

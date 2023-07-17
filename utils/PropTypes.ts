@@ -6,7 +6,7 @@ export interface RouterProps {
 
 export type PrimaryButtonProps={
     title:string,
-    navigation: NavigationProp<any, any>
     disabled:boolean
+    onPress:()=>void
     
 }
