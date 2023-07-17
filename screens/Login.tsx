@@ -47,7 +47,7 @@ const Login = ({navigation}:RouterProps) => {
                     </View>
 
                     <View style={styles.loginButtonsView}>
-                        <PrimaryButton title='Login' navigation={navigation}  />
+                        <PrimaryButton title='Login' navigation={navigation} disabled={false}  />
                     </View>
                     <View style={{ justifyContent:'center' }}>
                         <Text style={{ textAlign: 'center', color:'#8f9195',margin:5 }}>or Login with</Text>

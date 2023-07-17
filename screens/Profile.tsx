@@ -7,6 +7,10 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { background, logo } from '../assets/assets'
 import { RouterProps } from '../utils/PropTypes'
 import { height } from '../constants/Layout'
+import EditButton from '../component/EditButton'
+import { Button } from 'react-native-paper'
+import Colors from '../constants/Colors'
+import AntDesign from 'react-native-vector-icons/AntDesign'
 
 const Profile = ({ navigation }: RouterProps) => {
   const [editEnabled, setEditEnabled] = useState(false);
@@ -23,11 +27,25 @@ const Profile = ({ navigation }: RouterProps) => {
       <View style={styles.bottomView}>
         <View style={{ padding: 40 }}>
           <View style={styles.formView}>
+            <Button
+              icon={({ size, color }) => (
+                <AntDesign name="edit" size={20} color="#fff" />
+              )}
+              onPress={() => setEditEnabled(!editEnabled)}
+              mode='contained'
+              style={{
+                borderColor: Colors.primary,
+                width: '30%'
+              }}
+              buttonColor={Colors.primary}
+            >
+              Edit
+            </Button>
             <View>
-              <AppTextInput placeholder='Full Name' editable={editEnabled} />
+              <AppTextInput placeholder='Full Name' editable={editEnabled} value='Sneha Goregaonkar' />
             </View>
             <View>
-              <AppTextInput placeholder='Email' editable={editEnabled} />
+              <AppTextInput placeholder='Email' editable={editEnabled}  />
             </View>
             <View>
               <AppTextInput placeholder='Mobile No.' editable={editEnabled} />
@@ -35,7 +53,7 @@ const Profile = ({ navigation }: RouterProps) => {
           </View>
           <View style={styles.forgetPassView}>
             <View style={{ flex: 1, }}>
-              <AppTextButton title='Forgot Password?' />
+              <AppTextButton title='Change Password?' />
             </View>
           </View>
 

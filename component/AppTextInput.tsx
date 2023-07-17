@@ -2,7 +2,7 @@ import React from 'react';
 import { TextInput, TextInputProps } from 'react-native-paper';
 import Colors from '../constants/Colors';
 
-const AppTextInput: React.FC<TextInputProps> = ({ placeholder, right, secureTextEntry,keyboardType, editable }) => {
+const AppTextInput: React.FC<TextInputProps> = ({ placeholder, value, secureTextEntry,keyboardType, editable }) => {
   return (
     <TextInput
       style={[
@@ -19,6 +19,7 @@ const AppTextInput: React.FC<TextInputProps> = ({ placeholder, right, secureText
       right={secureTextEntry ? <TextInput.Icon icon='eye' /> : null}
       keyboardType={keyboardType}
       editable={editable}
+      value={value}
     />
   )
 }
