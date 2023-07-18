@@ -1,5 +1,5 @@
-import { StyleSheet, View } from 'react-native'
-import React, { useState } from 'react';
+import { ActivityIndicator, StyleSheet, View } from 'react-native'
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -12,18 +12,36 @@ import ConsultDoctor from '../screens/ConsultDoctor';
 import Cart from '../screens/Cart';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Colors from '../constants/Colors';
-import { BottomNavigation } from 'react-native-paper';
-import { width } from '../constants/Layout';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../utils/firebase';
 
+type ContextType = {
+  user: any
+  setUser: React.Dispatch<React.SetStateAction<any>>
+}
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
+const Stack = createStackNavigator()
+
+const AuthContext = createContext<ContextType | null>(null);
+
+const AuthUserProvider = ({ children }: any) => {
+  const [user, setUser] = useState("");
+  const value = {
+    user,
+    setUser
+  }
+  return (
+    <AuthContext.Provider value={value}>
+      {children}
+    </AuthContext.Provider>
+  )
+}
 
 const AuthStackNavigation = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name='Home' component={Home} />
-      <Tab.Screen name="Consult" component={ConsultDoctor} />
+      <Stack.Screen name='Home' component={BottomTabs} />
     </Stack.Navigator>
   )
 }
@@ -35,7 +53,6 @@ const UnAuthStackNavigation = () => (
     }}>
     <Stack.Screen name='Login' component={Login} />
     <Stack.Screen name='Register' component={Register} />
-    <Stack.Screen name='Home' component={Home} />
   </Stack.Navigator>
 );
 
@@ -126,14 +143,32 @@ function BottomTabs() {
 }
 
 const Navigation = () => {
-  const [loggedIn, setLoggedin] = useState(false)
-  return (
-    <NavigationContainer>
-      {
-        loggedIn ? <BottomTabs/> : <UnAuthStackNavigation/>
-        // <BottomTabs />
+  const userCtx = useContext(AuthContext);
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth,
+      async authenticatedUser => {
+        authenticatedUser ? userCtx?.setUser(authenticatedUser) : userCtx?.setUser(null);
+        setLoading(false);
       }
-    </NavigationContainer>
+    );
+    return () => unsubscribe();
+  }, [userCtx?.user]);
+  if (loading) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size='large' />
+      </View>
+    )
+  }
+  return (
+    <AuthUserProvider>
+      <NavigationContainer>
+        {
+          userCtx?.user ? <AuthStackNavigation /> : <UnAuthStackNavigation />
+        }
+      </NavigationContainer>
+    </AuthUserProvider>
   )
 }
 

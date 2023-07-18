@@ -7,21 +7,33 @@ import { height } from '../constants/Layout';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { RouterProps } from '../utils/PropTypes';
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../utils/firebase';
+import firestore from '@react-native-firebase/firestore';
+import { app, auth, firebaseConfig } from '../utils/firebase';
+import { initializeApp } from 'firebase/app';
+import { firebase } from '@react-native-firebase/auth';
 
 const Register = ({ navigation }: RouterProps) => {
     const [mobile, setMobile] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleRegistration = () => {
+    const handleRegistration = async () => {
         if (mobile !== "" && email !== "" && password !== "") {
-            createUserWithEmailAndPassword(auth, email, password)
-                .then(() => {
-                    console.log("registration success")
-                    navigation.navigate('Home')
-                })
-                .catch((error) => Alert.alert("Failed to register", error.message))
+            try {
+            initializeApp(firebaseConfig)
+            const authUser=await createUserWithEmailAndPassword(auth, email, password);
+            // const userCollection=firestore().collection('users').doc(email);
+            // userCollection.set({
+            //     owner_uid: authUser.user.uid,
+            //     email:email,
+            //     mobile:mobile,
+            //     password:password
+            // })
+            navigation.navigate('Home')
+            } catch (error) {
+                Alert.alert("Failed to register", error+"");
+                console.log(error)
+            }
         }
     }
     return (

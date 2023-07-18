@@ -1,5 +1,6 @@
 import React from 'react'
-import { ScrollView, StyleSheet, View, Text, TouchableOpacity, FlatList } from 'react-native'
+import { StyleSheet, View, Text, TouchableOpacity, FlatList } from 'react-native';
+import { ScrollView } from 'react-native-virtualized-view'
 import AppBar from '../component/AppBar'
 import AppListView from '../component/AppListView'
 import Colors from '../constants/Colors'
@@ -29,10 +30,10 @@ const Home = () => {
             </TouchableOpacity>
           </View>
           <FlatList
-          data={comboProductList}
-          renderItem={({item})=>(
-            <ComboProductItem item={item} />
-          )}
+            data={comboProductList}
+            renderItem={({ item }) => (
+              <ComboProductItem item={item} />
+            )}
           />
         </View>
       </ScrollView>
@@ -68,8 +69,8 @@ const styles = StyleSheet.create({
     // borderColor: Colors.primary,
     // borderWidth: .5,
     padding: 3,
-    margin:3,
-    fontWeight:'500'
+    margin: 3,
+    fontWeight: '500'
   },
   spacing: {
     marginBottom: 10,

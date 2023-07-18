@@ -8,20 +8,34 @@ import AppTextButton from '../component/AppTextButton';
 import { height } from '../constants/Layout';
 import { RouterProps } from '../utils/PropTypes';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-import { auth } from '../utils/firebase';
+import { auth, firebaseConfig } from '../utils/firebase';
+import { firebase } from '@react-native-firebase/auth';
 
 const Login = ({ navigation }: RouterProps) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleLogin = () => {
+    const handleLogin = async () => {
         if (email !== "" && password !== "") {
-            signInWithEmailAndPassword(auth, email, password)
-                .then(() => {
-                    console.log("Login success")
-                    navigation.navigate('Home')
-                })
-                .catch((error) => Alert.alert("Login Error", error.message));
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                navigation.navigate('Home')
+
+            } catch (error) {
+                Alert.alert("Login Error", error + '',
+                [
+                    {
+                        text:'Ok',
+                        onPress:()=>{},
+                        style:'cancel'
+                    },
+                    {
+                        text:'Sign Up',
+                        onPress:()=>navigation.navigate('Register'),
+                        style:'default'
+                    }
+                ])
+            }
         }
     }
     return (
