@@ -50,7 +50,7 @@ const Register = ({ navigation }: RouterProps) => {
                 <View style={{ padding: 40 }}>
                     <Text style={styles.welcomeText}>Welcome</Text>
                     <Text>Don't have an account?
-                        <Text style={styles.registerText}> Login Now</Text>
+                        <Text style={styles.registerText} onPress={()=>navigation.navigate('Login')}> Login Now</Text>
                     </Text>
                     <View style={styles.formView}>
                         <View>

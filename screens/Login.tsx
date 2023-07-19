@@ -51,11 +51,9 @@ const Login = ({ navigation }: RouterProps) => {
             <View style={styles.bottomView}>
                 <View style={{ padding: 40 }}>
                     <Text style={styles.welcomeText}>Welcome</Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('Register')}>
                         <Text>Don't have an account?
-                            <Text style={styles.registerText}> Register Now</Text>
+                            <Text style={styles.registerText} onPress={()=>navigation.navigate('Register')}> Register Now</Text>
                         </Text>
-                    </TouchableOpacity>
 
                     <View style={styles.formView}>
                         <View>
